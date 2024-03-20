@@ -16,9 +16,11 @@ def getName(cursor, table):
     if len(results) == 0:
         print("No users detected.")
         return None
+    # Print the names
     for x in range(len(results)):
         print(f"{x+1} - {results[x][0]}")
     choice = 0
+    # Find a specific name
     while choice < 1 or choice > len(results):
         choice = int(input("Name ID: "))
     return results[choice - 1][0]
@@ -43,6 +45,7 @@ def joinTables(cursor):
 # Active Portion
 choice = None
 while choice != "8":
+    # Loop through the options
     print("1: Display Table")
     print("2) Add User")
     print("3) Update User Highscore")
@@ -93,12 +96,15 @@ while choice != "8":
         cursor.execute("DELETE FROM privateUsers WHERE username = ?", values)
         connection.commit()
     elif choice == "5":
+        # Print result of the average highscore
         results = cursor.execute("SELECT avg(highscore) FROM users")
         print(results.fetchone())
     elif choice == "6":
+        # Count number of users for a larger table
         results = cursor.execute("SELECT COUNT(*) FROM users")
         print(results.fetchone())
     elif choice == "7":
+        # Swap tables to the private table
         choice = None
         while choice != "7" and choice != "6":
             print("1: Display Table")
@@ -149,6 +155,7 @@ while choice != "8":
                 cursor.execute("DELETE FROM privateUsers WHERE username = ?", values)
                 connection.commit()
             elif choice == "5":
+                # Count number of users for a larger table
                 results = cursor.execute("SELECT COUNT(*) FROM privateUsers")
                 print(results.fetchone())
 
