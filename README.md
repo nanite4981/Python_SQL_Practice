@@ -13,7 +13,7 @@
 
 - I am using the SQLite database that works as a Python module.
 
-{Describe the structure (tables) of the relational database that you created.}
+- I have two small tables. They both have a username element and an INTEGER element, but the INTEGER elements are distinct.
 
 # Development Environment
 
@@ -29,3 +29,4 @@
 
 - Add additional methods
 - Add more activity to the program
+- Find a cleaner way to code the table swap
