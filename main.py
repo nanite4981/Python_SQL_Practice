@@ -138,8 +138,8 @@ while choice != "8":
                 try:
                     username = input("Username: ")
                     account = input("Account: ")
-                    values = (highscore, username)
-                    cursor.execute("UPDATE users SET account = ? WHERE username = ?", values)
+                    values = (account, username)
+                    cursor.execute("UPDATE privateUsers SET account = ? WHERE username = ?", values)
                     connection.commit()
                     if cursor.rowcount == 0:
                         print("Invalid Username")
@@ -147,7 +147,8 @@ while choice != "8":
                     print("Invalid Score")
             elif choice == "4":
                 # Delete User
-                username = getName(cursor)
+                table = input("Table Name: ")
+                username = getName(cursor, table)
                 if username == None:
                     continue
                 values = (username, )
